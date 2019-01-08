@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class= "navbar-brand" href="{%url 'index' %}">Django</a></li>
+          <li><a class= "nav-link" href="{%url 'admin:index'%}">Admin</a></li>
+          <li><a class="nav-link" href="{%url 'app_five:register'%}">Register</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="nav-link" href="{%url 'logout'%}">Logout</a></li>
+          {% else %}
+          <li><a class="nav-link" href="{%url 'app_five:user_login'%}">LogIn</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+  </body>
+</html>
